@@ -1566,33 +1566,6 @@ class MySpider(Spider):
 
 
 
-    def parse_s(self, item):
-       # print type(item)
-        newurl3 = ('http://pms.yhd.com/pms/getUpRelatedProductsByProductIdByJson.do?pmid=%d') % (int(item.get('pmId')))
-        newurl2 = ('http://pms.yhd.com/pms/getLeftRecommProductsByJson.do?'+'currSiteId=1&pmid=%d&provinceId=1&productid=%d') % (int(item.get('pmId')), int(item.get('productId')))
-        newurl4 = 'http://pms.yhd.com/pms/getUpRelatedProductsByProductIdByJson.do?productid=%d&pmid=%d&showNum=20' % (int(item.get('productId')),int(item.get('pmId')) )
-        if newurl3:
-            url = newurl3
-            yield Request(url=url, callback = parse,dont_filter=True)
-        if newurl2:
-            url = newurl2
-            yield Request(url=url, callback = parse,dont_filter=True)
-        if newurl4:
-            url = newurl4
-            yield Request(url=url, callback = parse,dont_filter=True)
-
-    def get_url(items):
-        newurl3 = ('http://pms.yhd.com/pms/getUpRelatedProductsByProductIdByJson.do? pmid=%d') % (item["pmId"])
-        newurl2 = ('http://pms.yhd.com/pms/getLeftRecommProductsByJson.do?'+'currSiteId=1&pmid=%d&provinceId=1&productid=%d') % (item['pmId'], item['productID'])
-        newurl4 = ('http://pms.yhd.com/pms/getUpRelatedProductsByProductIdByJson.do?productid=%d&pmid=%d&showNum=20') % (item['productID'],item['pmId'] )
-        if newurl3:
-            url = newurl3
-        if newurl2:
-            url = newurl2
-        if newurl4:
-            url = newurl4
-        return url
-
 
 
 
